@@ -1,0 +1,28 @@
+<div ng-controller = "AppSettings2Ctrl">
+	<div class = "signin-banner">App Settings</div>
+		
+		<div class = "signin-form">
+			<form name = "settingsForm" ng-submit = "updateSettings()">
+				<div>Software Update</div>
+				<div ng-repeat = "opt in toggle">
+					<input name = "timeFormat" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.softUpdate">{{opt}}
+					<br>
+				</div>
+				<br>
+				<div>Select Unit Type:</div>
+				<div ng-repeat = "opt in toggle">
+					<input name = "timeFormat" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.notifications">{{opt}}
+					<br>
+				</div>
+				<br>
+				<div>Select Language Type:</div>
+				<div ng-repeat = "opt in toggle">
+					<input name = "timeFormat" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.social">{{opt}}
+					<br>
+				</div>
+			</form>
+			{{settings}}
+			<button ng-click = "saveAndContinue()">Next</button>			
+		</div>
+
+</div>

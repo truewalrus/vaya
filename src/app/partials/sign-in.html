@@ -1,0 +1,30 @@
+<div class = "signin" ng-controller="SignInCtrl">
+	<div class = "signin-banner">Connect</div>
+	
+	<div ng-show = "signup" class = "signin-form">
+		<form ng-submit = "createUser()">
+			<div>Email:</div>
+			<input class = "signin-input" type = "text" placeholder = "Email" ng-model = "email" required>
+			<div>Password:</div>
+			<input class = "signin-input" type = "password" placeholder = "password" ng-model = "password" required>
+			<div>Confirm:</div>
+			<input class = "signin-input" type = "password" placeholder = "password" ng-model = "confirm" required>
+			<input type = "submit" value = "Sign Up">
+		</form>
+		<div>{{message}}</div>
+		<div>Already have an account? <button ng-click = "signup=false">Log in</button></div>
+	</div>
+	
+	<div ng-show = "!signup" class = "signin-form">
+		<form ng-submit = "login()">
+			<div>Email:</div>
+			<input class = "signin-input" type = "text" placeholder = "Email" ng-model = "email" required>
+			<div>Password:</div>
+			<input class = "signin-input" type = "password" placeholder = "password" ng-model = "password" required>
+			<input type = "submit" value = "Sign In">
+		</form>
+		<div>{{message}}</div>
+		<div>Don't have an account? <button ng-click = "signup=true">Sign up</button></div>
+	
+	
+</div>

@@ -1,0 +1,19 @@
+<div ng-controller = "AddInfoCtrl">
+	<div class = "signin-banner">Controller Setup</div>
+	
+	<div class = "signin-form">
+		<form ng-submit = "next()">
+			<div>Controller #: </div>
+			<div>Number of users allowed: <input type = "text" placeholder = "#" ng-model = "controller.allowed" required></div>
+			<div>Serial #: <input type = "text" placeholder = "serial #" ng-model = "serial" required></div>
+			<div>City: <input type = "text" placeholder = "City" ng-model = "controller.city" required></div>
+			<div>State: <input type = "text" placeholder = "State" ng-model = "controller.state" required></div>
+			<div>Zip Code: <input type = "text" placeholder = "Zip" ng-model = "controller.zip" required></div>
+			<div>Number of Stations: <input type = "text" placeholder = "#" ng-model = "controller.stations" required></div>
+			<div>Country: <input type = "text" placeholder = "Country" ng-model = "controller.country" required></div>
+			<div>Note: <input type = "text" placeholder = "Any notes..." ng-model = "controller.notes"></div>
+			<div><input type = "submit" value = "Next"></div>
+		</form>
+	</div>
+
+</div>

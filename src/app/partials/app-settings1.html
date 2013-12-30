@@ -1,0 +1,28 @@
+<div ng-controller = "AppSettings1Ctrl">
+	<div class = "signin-banner">App Settings</div>
+	
+	<div class = "signin-form">
+		<form name = "settingsForm" ng-submit = "updateSettings()">
+			<div>Select Time Format:</div>
+			<div ng-repeat = "format in tf">
+				<input name = "timeFormat" type = "radio" value = "{{format}}" ng-model = "$parent.settings.timeFormat">{{format}}
+				<br>
+			</div>
+			<br>
+			<div>Select Unit Type:</div>
+			<label ng-repeat = "unit in uf">
+				<input name = "unitFormat" type = "radio" value = "{{unit}}" ng-model = "$parent.settings.unitFormat">{{unit}}
+				<br>
+			</label>
+			<br>
+			<div>Select Language Type:</div>
+			<label ng-repeat = "lan in lang">
+				<input name = "language" type = "radio" value = "{{lan}}" ng-model = "$parent.settings.language">{{lan}}
+				<br>
+			</label>
+		</form>
+		{{settings}}
+		<button ng-click = "saveAndContinue()">Next</button>
+					
+	</div>
+</div>

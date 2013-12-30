@@ -1,0 +1,11 @@
+<div ng-controller = "AddStartCtrl">
+	<div class = "signin-banner">Controller Setup</div>
+	
+	<div class = "signin-form">
+		Please follow these steps to setup and synchronize with your controller.
+		<ol>
+			<li ng-repeat = "step in steps">{{step}}<li>
+		</ol>
+	</div>
+	<button ng-click = "next()">Next</button>
+</div>

@@ -1,0 +1,52 @@
+<div ng-controller = "AddSettingsCtrl">
+    <div class = "signin-banner">App Settings</div>
+
+    <div class = "signin-form">
+        <form name = "settingsForm" ng-submit = "updateSettings()">
+            <div>System Alerts:</div>
+            <div ng-repeat = "opt in toggle">
+                <input name = "salert" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.systemAlerts">{{opt}}
+                <br>
+            </div>
+            <div>Program Schedule Alerts:</div>
+            <div ng-repeat = "opt in toggle">
+                <input name = "schelert" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.pScheduleAlerts">{{opt}}
+                <br>
+            </div>
+            <div>Status Reports:</div>
+            <div ng-repeat = "opt in toggle">
+                <input name = 'sreport' type = "radio" value = "{{opt}}" ng-model = "$parent.settings.statusReports">{{opt}}
+                <br>
+            </div>
+            <div>
+                <div>Suspend Watering for:</div>
+                <input type = "text" ng-model = "settings.suspendFor">Day(s)
+            </div>
+            <div>
+                <div>Valves time delay:</div>
+                <input type = "text" ng-model = "settings.vTimeDelay">Second(s)
+            </div>
+            <div>
+                <div>MV/P time delay:</div>
+                <input type = "text" ng-model = "settings.mvpTimeDelay">Second(s)
+            </div>
+            <div>
+                Controller programs:
+                <div ng-repeat = "opt in toggle">
+                    <input name = "program" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.programs">{{opt}}
+                    <br>
+                </div>
+            </div>
+            <div>
+                Reset controller:
+                <div ng-repeat = "opt in toggle">
+                    <input name = "reset" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.reset">{{opt}}
+                    <br>
+                </div>
+            </div>
+
+        </form>
+        <button ng-click = "next()">Next</button>
+    </div>
+
+</div>

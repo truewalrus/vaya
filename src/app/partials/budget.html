@@ -1,0 +1,28 @@
+<div ng-controller = "BudgetCtrl">
+    <div class = "signin-banner">Controller Setup</div>
+    <div class = "signin-form">
+        <span>Budget: </span>
+        <div style = "display: inline" ng-repeat = "opt in toggle">
+            <input style = "display: inline-block" name = 'showBudget' type = "radio" value = "{{opt}}" ng-model = "$parent.showBudget">{{opt}}
+        </div>
+
+        <div ng-show = "showBudget == 'yes'">
+            <table class = "system-table">
+            <tr><th>Monthly Budget</th></tr>
+            <tr ng-repeat = "month in months">
+                <td>{{month}}</td>
+                <td><div ng-repeat = "opt in funct">
+                    <input style = "display: inline-block" name = 'funct{{$parent.$index}}' type = "radio" value = "{{opt}}" ng-model = "operate[$parent.$index]">{{opt}}
+                    <br>
+                </div></td>
+                <td>
+                    <input value = "100%" ng-show = "operate[$index] == 'operate'">
+                    <span ng-show = "operate[$index] == 'disable'">Disabled</span>
+                </td>
+            </tr>
+            </table>
+        </div>
+        <button ng-click = "next()">Next</button>
+    </div>
+
+</div>

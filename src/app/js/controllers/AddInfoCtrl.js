@@ -14,7 +14,7 @@ angular.module("myApp.controllers").controller('AddInfoCtrl', ['$scope', '$http'
 		'stations': '',
 		'country': '',
 		'note': '',
-		'user': 'test5'
+		'user': u.id
 	};
 		
 	$scope.next = function(){
@@ -22,7 +22,7 @@ angular.module("myApp.controllers").controller('AddInfoCtrl', ['$scope', '$http'
 			success(function(data){
 				console.log("success");
 				console.log(data);
-				$location.url('/add-settings/' + $scope.serial);
+				$location.path('/add-settings/' + $scope.serial);
 			}).
 			error(function(data){
 				console.log("error" +data);

@@ -1,0 +1,29 @@
+<div ng-controller = "SystemCtrl">
+    <div class = "signin-banner">Controller Setup</div>
+
+    <div class = "signin-form">
+        <table class = "system-table"">
+            <tr><th>System</th></tr>
+            <tr>
+                <th>Options</th>
+                <th>MV/P</th>
+                <th>Active Valve</th>
+                <th>Circuit Test</th>
+            </tr>
+            <tr ng-repeat = "i in getNumber(8)">
+                <td>Valve {{$index+1}}</td>
+                <td><input type = "text"></td>
+                <td><div ng-repeat = "opt in toggle">
+                    <input style = "display: inline-block" name = 'active{{$parent.$index}}' type = "radio" value = "{{opt}}">{{opt}}
+                    <br>
+                </div></td>
+                <td><div style = "display: inline-block" ng-repeat = "opt in circuits">
+                    <input name = 'circuit{{$parent.$index}}' type = "radio" value = "{{opt}}">{{opt}}
+                    <br>
+                </div></td>
+            </tr>
+        </table>
+        <button ng-click = "next()">Next</button>
+    </div>
+
+</div>

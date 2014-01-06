@@ -11,15 +11,15 @@ collections.push(function(err, db) {
 				});
 			}
 
-           // db.ensureIndex('controllers', {'id': 1}, {unique: true, dropDups: true}, function() {});
+           db.ensureIndex('controllers', {'serial': 1}, {unique: true, dropDups: true}, function() {});
 		});
 	}
 });
 
 function controllers_upsertController(request, response){
-	console.log(request.body.serial);
 	db_connector.collection('controllers', function(err, collection){
-		collection.update({'serial':request.body.serial}, {$set:request.body.controller}, {upsert: true}, function(error, data){
+        console.log(request.body.serial);
+		collection.update({'serial':request.body.serial.toUpperCase()}, {$set:request.body.controller}, {upsert: true}, function(error, data){
 			if (error) {
                 response.send(500, { error: "Database error occurred while processing request." });
             }
@@ -45,7 +45,7 @@ function controllers_getControllers(request, response) {
 
 function controllers_getController(request, response) {
     db_connector.collection('controllers', function(err, collection) {
-        collection.find({'serial': request.params.serial}).toArray(function(error, data) {
+        collection.find({'serial': request.params.serial.toUpperCase()}).toArray(function(error, data) {
             if(error){
 				response.send(500, { error: "Database error occurred while processing request."});
 			}

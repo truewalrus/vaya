@@ -6,7 +6,7 @@ angular.module("myApp.controllers").controller('AppSettings1Ctrl', ['$scope', '$
 	$http.get('api/settings/getSettings/' + u.username).
 		success(function(data){
 			if(data.length > 0){
-				$location.url('/loading');
+				$location.url('/cs');
 			}
 			console.log("am in success.");
 			console.log(data);

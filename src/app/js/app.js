@@ -14,6 +14,10 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
 	//$routeProvider.when('/as2', {templateUrl: '/partials/app-settings2.html'});
 	//$routeProvider.when('/add-start', {templateUrl: '/partials/add-start.html'});
 	//$routeProvider.when('/add-info', {templateUrl: '/partials/add-info.html'});
+    //$routeProvider.when('/add-settings', {templateUrl: '/partials/add-settings.html'});
+     $routeProvider.when('/system', {templateUrl: '/partials/system.html'});
+     $routeProvider.when('/budget', {templateUrl: '/partials/budget.html'});
+     $routeProvider.when('/event-calendar', {templateUrl: '/partials/event-calendar.html'});
 	
 	//Locked out pages
     $routeProvider.when('/as1', {templateUrl: '/partials/app-settings1.html',
@@ -69,6 +73,19 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
         }
     });
 	$routeProvider.when('/add-info', {templateUrl: '/partials/add-info.html',
+        resolve: {
+            auth: function(user, $location){
+                user.checkSession(
+                    function(data) {
+                    },
+                    function(data) {
+                        $location.path('/loading');
+                    }
+                );
+            }
+        }
+    });
+    $routeProvider.when('/add-settings/:serial', {templateUrl: '/partials/add-settings.html',
         resolve: {
             auth: function(user, $location){
                 user.checkSession(

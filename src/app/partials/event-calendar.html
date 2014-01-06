@@ -1,0 +1,15 @@
+<div ng-controller = "BudgetCtrl">
+    <div class = "signin-banner">Controller Setup</div>
+    <div class = "signin-form">
+        <span>Evemt Calendar: </span>
+        <div style = "display: inline" ng-repeat = "opt in toggle">
+            <input style = "display: inline-block" name = 'showCalendar' type = "radio" value = "{{opt}}" ng-model = "$parent.showCalendar">{{opt}}
+        </div>
+
+        <div ng-show = "showCalendar == 'yes'">
+            WOW LOOK AT THIS AMAZING CALENDAR
+        </div>
+        <button ng-click = "next()">Next</button>
+    </div>
+
+</div>

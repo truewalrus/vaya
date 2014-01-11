@@ -2,14 +2,20 @@
     <div class = "signin-banner">Controllers</div>
 
     <div class = "signin-form">
-        <div>Add a controller? <button ng-click = "addController()">Add </button></div>
-        <div>Controllers:</div>
+        <div>Controllers: <button ng-click = "editControllers()">Edit</button></div>
         <ol>
-            <li ng-repeat = "controller in controllers">
-                <div ng-click = "editCtrl()">{{controller.serial}}</div>
-                <div>{{controller.street}}</div>
-                <div>{{controller.numStations}}</div>
+            <li ng-repeat = "controller in controllers | filter:filter">
+                <div>
+                    <a ng-href = '/info/{{controller.serial}}'><div>
+                        <div>{{controller.serial}}</div>
+                        <div>{{controller.street}}</div>
+                    </div></a>
+                </div>
             </li>
         </ol>
+        <button ng-click = "showFilter = !showFilter">Find</button><button ng-click = "editApp()">App Settings</button>
+        <div ng-show = "showFilter">
+            <input type = "text" ng-model = "filter">
+        </div>
     </div>
 </div>

@@ -2,22 +2,25 @@
 
 angular.module("myApp.controllers").controller('ControllerListCtrl', ['$scope', '$http', 'user', '$location', function($scope, $http, user, $location){
 
-    //var u = user.getUser();
+    var u = user.getUser();
 
-    $scope.addController = function(){
-        $location.url('/begin-add');
+    $scope.editControllers = function(){
+        $location.url('/cs');
     };
 
-   /* $scope.saveAndContinue = function(){
-        $http.post('api/settings/upsert/', {'username':u.username, 'settings':$scope.settings}).
-            success(function(data) {
-                console.log("success" + data);
-                $location.url('/controller-list');
-            }).
-            error(function(data) {
-                console.log("error" + data);
-            });
+    $http.get('/api/controllers/getControllers/' + u.id).
+        success(function(data){
+            console.log("found controllers");
+            console.log(data);
+            $scope.controllers = data;
+        }).
+        error(function(data){
+            console.log("error");
+            console.log(data);
+        });
 
-    };*/
+    $scope.editApp = function(){
+        $location.url('/app-settings');
+    };
 
 }]);

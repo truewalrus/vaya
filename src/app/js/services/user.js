@@ -12,7 +12,7 @@ angular.module("myApp.services")
 
         //signup
         this.signUp = function(username, password, success, error){
-            $http.post('api/user/create', {'username': username, 'password': password}).
+            $http.post('/api/user/create', {'username': username, 'password': password}).
                 success(function(data) {
                     success(data);
                 }).
@@ -23,7 +23,7 @@ angular.module("myApp.services")
 
         //login -- email/display name, password,
         this.login = function(username, password, success, error){
-            $http.post('api/user/login', {'username': username, 'password': password}).
+            $http.post('/api/user/login', {'username': username, 'password': password}).
                 success(function(data) {
                     user = data;
                     loggedIn = true;
@@ -37,7 +37,7 @@ angular.module("myApp.services")
         };
 
         this.checkSession = function(success, error){
-            $http.get('api/user/checkSession').
+            $http.get('/api/user/checkSession').
                 success(function(data) {
                     loggedIn = true;
 					user = data;
@@ -50,7 +50,7 @@ angular.module("myApp.services")
         };
 
 		this.logout = function(success, error) {
-			$http.get('api/user/logout').
+			$http.get('/api/user/logout').
 				success(function(data) {
                     user = false;
                     loggedIn = false;
@@ -63,7 +63,7 @@ angular.module("myApp.services")
 
 
 		this.deleteLoggedIn = function(success, error) {
-			$http.get('api/user/delete').
+			$http.get('/api/user/delete').
 				success(function(data) {
 					success(data);
 				}).

@@ -18,6 +18,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
      $routeProvider.when('/system', {templateUrl: '/partials/system.html'});
      $routeProvider.when('/budget', {templateUrl: '/partials/budget.html'});
      $routeProvider.when('/event-calendar', {templateUrl: '/partials/event-calendar.html'});
+     $routeProvider.when('/sensors', {templateUrl: '/partials/sensors.html'});
 	
 	//Locked out pages
     $routeProvider.when('/as1', {templateUrl: '/partials/app-settings1.html',
@@ -72,7 +73,20 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
             }
         }
     });
-	$routeProvider.when('/add-info', {templateUrl: '/partials/add-info.html',
+     $routeProvider.when('/add-info/', {templateUrl: '/partials/add-info.html',
+         resolve: {
+             auth: function(user, $location){
+                 user.checkSession(
+                     function(data) {
+                     },
+                     function(data) {
+                         $location.path('/loading');
+                     }
+                 );
+             }
+         }
+     });
+	$routeProvider.when('/add-info/:serial', {templateUrl: '/partials/add-info.html',
         resolve: {
             auth: function(user, $location){
                 user.checkSession(
@@ -90,6 +104,8 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
             auth: function(user, $location){
                 user.checkSession(
                     function(data) {
+                        console.log(data);
+                        console.log('/add-settings');
                     },
                     function(data) {
                         $location.path('/loading');
@@ -98,6 +114,58 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
             }
         }
     });
+    $routeProvider.when('/cl', {templateUrl: '/partials/controller-list.html',
+         resolve: {
+             auth: function(user, $location){
+                 user.checkSession(
+                     function(data) {
+                     },
+                     function(data) {
+                         $location.path('/loading');
+                     }
+                 );
+             }
+         }
+     });
+     $routeProvider.when('/info/:serial', {templateUrl: '/partials/info.html',
+         resolve: {
+             auth: function(user, $location){
+                 user.checkSession(
+                     function(data) {
+                     },
+                     function(data) {
+                         $location.path('/loading');
+                     }
+                 );
+             }
+         }
+     });
+     $routeProvider.when('/app-settings', {templateUrl: '/partials/app-settings.html',
+         resolve: {
+             auth: function(user, $location){
+                 user.checkSession(
+                     function(data) {
+                     },
+                     function(data) {
+                         $location.path('/loading');
+                     }
+                 );
+             }
+         }
+     });
+     $routeProvider.when('/program/:serial', {templateUrl: '/partials/program.html',
+         resolve: {
+             auth: function(user, $location){
+                 user.checkSession(
+                     function(data) {
+                     },
+                     function(data) {
+                         $location.path('/loading');
+                     }
+                 );
+             }
+         }
+     });
 	
     $routeProvider.otherwise({redirectTo: '/loading'});
 

@@ -20,10 +20,6 @@ angular.module("myApp.controllers").controller('BudgetCtrl', ['$scope', '$http',
     $scope.circuits = ['open', 'short', 'open and short'];
     $scope.funct = ['operate', 'disable'];
 
-    $scope.getNumber = function(num){
-        return new Array(num);
-    };
-
     $scope.next = function(){
         $location.url('/event-calendar');
     };

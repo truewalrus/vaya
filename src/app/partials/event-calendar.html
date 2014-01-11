@@ -1,7 +1,7 @@
-<div ng-controller = "BudgetCtrl">
+<div ng-controller = "EventCalendarCtrl">
     <div class = "signin-banner">Controller Setup</div>
     <div class = "signin-form">
-        <span>Evemt Calendar: </span>
+        <span>Event Calendar: </span>
         <div style = "display: inline" ng-repeat = "opt in toggle">
             <input style = "display: inline-block" name = 'showCalendar' type = "radio" value = "{{opt}}" ng-model = "$parent.showCalendar">{{opt}}
         </div>

@@ -18,7 +18,8 @@ collections.push(function(err, db) {
 
 function controllers_upsertController(request, response){
 	db_connector.collection('controllers', function(err, collection){
-        console.log(request.body.serial);
+        console.log(request.body.serial.toUpperCase());
+        console.log(request.body.controller);
 		collection.update({'serial':request.body.serial.toUpperCase()}, {$set:request.body.controller}, {upsert: true}, function(error, data){
 			if (error) {
                 response.send(500, { error: "Database error occurred while processing request." });
@@ -61,6 +62,6 @@ function controllers_getController(request, response) {
 /* ALL DIS STUFF BE COOL */
 routing.push(function(app) {
 	app.post('/api/controllers/upsert', controllers_upsertController);
-	app.get('/api/settings/getControllers/:user', controllers_getControllers);
-	app.get('/api/settings/getController/:serial', controllers_getController);
+	app.get('/api/controllers/getControllers/:user', controllers_getControllers);
+	app.get('/api/controllers/getController/:serial', controllers_getController);
 });

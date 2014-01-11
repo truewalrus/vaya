@@ -1,0 +1,20 @@
+<div ng-controller = "SensorsCtrl">
+    <div class = "signin-banner">Controller Setup</div>
+    <div class = "signin-form">
+        <span>Sensors: </span>
+        <div style = "display: inline" ng-repeat = "opt in toggle">
+            <input style = "display: inline-block" name = 'showCalendar' type = "radio" value = "{{opt}}" ng-model = "$parent.showCalendar">{{opt}}
+        </div>
+
+        <div ng-show = "showCalendar == 'yes'">
+            <div><a href = '#'>Weather based</a></div>
+            <div><a href = '#'>Flow Sensors</a></div>
+            <div><a href = '#'>Moisture Sensors</a></div>
+            <br>
+            <div><a href = '#'>Wind Sensor</a></div>
+            <div><a href = '#'>Rain Collector</a></div>
+        </div>
+        <a ng-href = "/cs"><button>Complete Setup</button></a>
+    </div>
+
+</div>

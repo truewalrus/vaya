@@ -1,14 +1,17 @@
 'use strict';
 
-angular.module("myApp.controllers").controller('AddInfoCtrl', ['$scope', '$http', 'user', '$location', function($scope, $http, user, $location){
+angular.module("myApp.controllers").controller('AddInfoCtrl', ['$scope', '$http', 'user', '$location', '$routeParams', function($scope, $http, user, $location, $routeParams){
 	
 	var u = user.getUser();
-	
+
+
 	$scope.serial = '';
+    $scope.editing = false;
 	
 	$scope.controller = {
 		'allowed': '',
 		'city': '',
+        'street': '',
 		'state': '',
 		'zip': '',
 		'stations': '',
@@ -16,6 +19,25 @@ angular.module("myApp.controllers").controller('AddInfoCtrl', ['$scope', '$http'
 		'note': '',
 		'user': u.id
 	};
+
+    var serial = '';
+    if ($routeParams.serial)
+    {
+        serial = $routeParams.serial;
+        $http.get('/api/controllers/getController/' + serial).
+            success(function(data){
+                console.log("found controller");
+                console.log(data);
+                $scope.controller = data[0];
+                delete $scope.controller._id;
+                $scope.serial = data[0].serial;
+                $scope.editing = true;
+            })
+            .error(function(data){
+                console.log("failed to find controller");
+                console.log(data);
+            });
+    }
 		
 	$scope.next = function(){
 		$http.post('/api/controllers/upsert', {'serial':$scope.serial, 'controller': $scope.controller}).

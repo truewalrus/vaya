@@ -1,0 +1,11 @@
+<div ng-controller = "ProgramCtrl">
+    <div class = "signin-banner">Controllers</div>
+
+    <div class = "signin-form">
+        <div>Program Controller? <button ng-show = "!program.programmed" ng-click = "programController()">Program</button><button ng-show = "program.programmed" ng-click = "unprogramController()">Unprogram</button></div>
+
+        <div ng-show = "!program.programmed">Controller is not programmed</div>
+        <div ng-show = "program.programmed">Controller has been programmed</div>
+        <button ng-click = "done()">Done</button>
+    </div>
+</div>

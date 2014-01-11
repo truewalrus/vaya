@@ -1,0 +1,35 @@
+<div ng-controller = "AppSettingsCtrl">
+    <div class = "signin-banner">App Settings</div>
+
+    <div class = "signin-form">
+        <form name = "settingsForm" ng-submit = "updateSettings()">
+            <a href = '#'><div ng-click = "showTimeFormat = !showTimeFormat"> Time Format:</div></a>
+            <div ng-show = "showTimeFormat" ng-repeat = "format in tf">
+                <input name = "timeFormat" type = "radio" value = "{{format}}" ng-model = "$parent.settings.timeFormat">{{format}}
+            </div>
+            <a href = '#'><div ng-click = "showUnitFormat = !showUnitFormat">Select Unit Type:</div></a>
+            <label ng-show = "showUnitFormat" ng-repeat = "unit in uf">
+                <input name = "unitFormat" type = "radio" value = "{{unit}}" ng-model = "$parent.settings.unitFormat">{{unit}}
+            </label>
+            <a href = '#'><div ng-click = "showLanguageType = !showLanguageType">Language Type:</div></a>
+            <label ng-show = "showLanguageType" ng-repeat = "lan in lang">
+                <input name = "language" type = "radio" value = "{{lan}}" ng-model = "$parent.settings.language">{{lan}}
+            </label>
+            <a href = '#'><div ng-click = "showSoftwareUpdate = !showSoftwareUpdate">Software Update:</div></a>
+            <div ng-show = "showSoftwareUpdate" ng-repeat = "opt in toggle">
+                <input name = "update" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.softUpdate">{{opt}}
+            </div>
+            <a href = '#'><div ng-click = "showNotifications = !showNotifications">Notifications:</div></a>
+            <div ng-show = "showNotifications" ng-repeat = "opt in toggle">
+                <input name = "unit" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.notifications">{{opt}}
+            </div>
+            <a href = '#'><div ng-click = "showSocialNetwork = !showSocialNetwork">Social Network:</div></a>
+            <div ng-show = "showSocialNetwork" ng-repeat = "opt in toggle">
+                <input name = "language" type = "radio" value = "{{opt}}" ng-model = "$parent.settings.social">{{opt}}
+                <br>
+            </div>
+        </form>
+        <button ng-click = "saveAndContinue()">Done</button>
+
+    </div>
+</div>

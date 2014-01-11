@@ -5,7 +5,9 @@
 		<form ng-submit = "next()">
 			<div>Controller #: </div>
 			<div>Number of users allowed: <input type = "text" placeholder = "#" ng-model = "controller.allowed" required></div>
-			<div>Serial #: <input type = "text" placeholder = "serial #" ng-model = "serial" required></div>
+			<div ng-show = "!editing">Serial #: <input type = "text" placeholder = "serial #" ng-model = "serial" required></div>
+			<div ng-show = "editing">Serial #: <input type = "text" placeholder = "serial #" ng-model = "serial" readonly></div>
+			<div>Street: <input type = "text" placeholder = "Street" ng-model = "controller.street" required></div>
 			<div>City: <input type = "text" placeholder = "City" ng-model = "controller.city" required></div>
 			<div>State: <input type = "text" placeholder = "State" ng-model = "controller.state" required></div>
 			<div>Zip Code: <input type = "text" placeholder = "Zip" ng-model = "controller.zip" required></div>

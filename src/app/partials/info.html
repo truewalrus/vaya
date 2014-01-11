@@ -1,0 +1,24 @@
+<div ng-controller = "InfoCtrl">
+    <div class = "signin-banner"><button ng-click ="back()">Back</button>Controller Info</div>
+
+    <div class = "signin-form">
+        <div>
+            <h2>Controller Information: </h2>
+            {{controller.serial}}
+            <br>
+            {{controller.street}}
+        </div>
+        <div>
+            <h2>Program Information:</h2>
+            <div ng-show = "!program">This controller has not been programmed.</div>
+            <div ng-show = "program">
+                This controller has been programmed
+            </div>
+        </div>
+        <div>
+            <button>History</button><button ng-click = "editController()">Settings</button><button>Social</button><button ng-click = "editProgram()">Program</button><button>Manual</button>
+        </div>
+    </div>
+
+
+</div>

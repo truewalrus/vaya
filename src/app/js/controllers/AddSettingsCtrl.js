@@ -2,17 +2,6 @@
 
 angular.module("myApp.controllers").controller('AddSettingsCtrl', ['$scope', '$http', 'user', '$location', '$routeParams', function($scope, $http, user, $location, $routeParams){
 
-
-    var serial = '';
-    if ($routeParams.serial)
-    {
-        serial = $routeParams.serial;
-        console.log(serial);
-    }
-    else{
-        $location.url('/cs');
-    }
-
     var u = user.getUser();
 
     $scope.settings = {
@@ -25,6 +14,26 @@ angular.module("myApp.controllers").controller('AddSettingsCtrl', ['$scope', '$h
         'programs': '',
         'reset': ''
     };
+
+    var serial = '';
+    if ($routeParams.serial)
+    {
+        serial = $routeParams.serial;
+        console.log(serial);
+
+        $http.get('/api/controllers/getController/' + serial).
+            success(function(data){
+                console.log("add settings");
+                $scope.settings = data[0];
+                delete $scope.settings._id;
+            })
+            .error(function(data){
+                console.log("failed to find controller");
+                console.log(data);
+            });
+    }
+
+
 
     $scope.toggle = ['yes', 'no'];
     $scope.next = function(){
@@ -39,16 +48,6 @@ angular.module("myApp.controllers").controller('AddSettingsCtrl', ['$scope', '$h
             });
     };
 
-    /*$scope.test = function(){
-     $http.get('api/settings/getSettings/' + u.username).
-     success(function(data){
-     console.log("success");
-     console.log(data);
-     }).
-     error(function(data){
-     console.log("error");
-     console.log(data);
-     });
-     };*/
+
 
 }]);
